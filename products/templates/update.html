@@ -10,11 +10,12 @@
 </head>
 <body>
     
-    <p>{{product.id}} - {{product.name}}</p>
+    <h2>{{product.id}} - {{product.name}} - {{product.price}}</h2>
 
     <form action="{% url 'update' product.id %}" method="POST">
         {% csrf_token %}
         <input type="text" name="name" value="{{product.name}}">
+        <input type="text" name="price" value="{{product.price}}">
         <button type="submit">update</button>
     </form>
 

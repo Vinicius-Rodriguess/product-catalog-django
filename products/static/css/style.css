@@ -84,3 +84,8 @@ form button:hover {
 .bi-trash {
   color: red;
 }
+
+h2 {
+  font-size: 2rem;
+  padding: 2rem;
+}

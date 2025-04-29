@@ -7,7 +7,8 @@ def home(request):
 
 def save(request):
     name = request.POST.get("name")
-    Product.objects.create(name=name)
+    price = request.POST.get("price")
+    Product.objects.create(name=name, price=price)
     products = Product.objects.all()
     return render(request, "index.html", {"products": products})
 
@@ -17,8 +18,10 @@ def edit(request, id):
 
 def update(request, id):
     name = request.POST.get("name")
+    price = request.POST.get("price")
     product = Product.objects.get(id=id)
     product.name = name
+    product.price = price
     product.save()
     return redirect(home)
 
