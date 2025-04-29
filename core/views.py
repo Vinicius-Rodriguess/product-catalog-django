@@ -21,3 +21,8 @@ def update(request, id):
     product.name = name
     product.save()
     return redirect(home)
+
+def delete(request, id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    return redirect(home)
