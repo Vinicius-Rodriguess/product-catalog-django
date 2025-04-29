@@ -1,0 +1,21 @@
+# Arquivos do Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Banco de dados
+db.sqlite3
+
+# Virtualenv
+venv/
+cliente1/
+
+# Arquivos de log
+*.log
+
+# Arquivos de ambiente
+.env
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
