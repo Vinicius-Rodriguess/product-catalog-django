@@ -8,13 +8,16 @@
 <body>
 
     <ul>
-
         {% for product in  products %}
             <li>{{product.id}} - {{product.name}}</li>
         {% endfor %}
-    
     </ul>
 
+    <form action="{% url 'save' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <button type="submit">Salvar</button>
+    </form>
 
 </body>
 </html>
