@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Catalog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
+    <div class="container">
 
-    <ul>
-        {% for product in  products %}
-            <li>{{product.id}} - {{product.name}} 
-                <a href="{% url 'edit' product.id %}">Editar</a>
-                <a href="{% url 'delete' product.id %}">Deletar</a>
-            </li>
-        {% endfor %}
-    </ul>
+        <form action="{% url 'save' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Nome do produto">
+            <input type="text" name="price"  placeholder="Preço">
+            <button type="submit">Salvar</button>
+        </form>
 
-    <form action="{% url 'save' %}" method="POST">
-        {% csrf_token %}
-        <input type="text" name="name">
-        <button type="submit">Salvar</button>
-    </form>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>R$ {{ product.price }}</td>
+                    <td>
+                        <a href="{% url 'edit' product.id %}"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'delete' product.id %}"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
 </body>
 </html>
